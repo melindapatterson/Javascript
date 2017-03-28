@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
     <title>Identikit</title>
-    
+
     <style>
       #controls {
         text-align: center;
@@ -12,7 +12,7 @@
         margin: auto;
         margin-bottom: 10px;
       }
-      
+
       #controls a {
         font-family: sans-serif;
         border: 1px solid black;
@@ -21,11 +21,11 @@
         padding: 5px;
         margin: 5px;
       }
-      
+
       #controls a:hover {
         background-color: yellow;
       }
-      
+
       #face {
         width: 400px;
         height: 400px;
@@ -34,12 +34,12 @@
         background-size: contain;
         position: relative;
       }
-      
+
       #eye_left, #eye_right {
         position: absolute;
         width: 50px;
       }
-      
+
       #mouth {
         position: absolute;
         width: 200px;
@@ -48,13 +48,13 @@
 </head>
 
 <body>
-  
+
   <div id="controls">
     <a id="eyes_up_btn">move eyes up</a>
-    <a>move eyes down</a>
-    <a>move eyes closer together</a>
-    <a>move eyes further apart</a>
-    <a>hollow eyes</a>
+    <a id="eyes_down_btn"> move eyes down</a>
+    <a id="eyes_closer_btn">move eyes closer together</a>
+    <a id="eyes_further_btn">move eyes further apart</a>
+    <a id="eyes_hollow_btn">hollow eyes</a>
     <a>solid eyes</a>
     <a>big eyes</a>
     <a>small eyes</a>
@@ -63,26 +63,28 @@
     <a>sad mouth</a>
     <a>reset face</a>
   </div>
-  
+
   <div id="face">
     <img id="eye_left" src="eye_solid.svg" />
     <img id="eye_right" src="eye_solid.svg" />
     <img id="mouth" src="mouth_happy.svg" />
+    <img id="eye_left2"src="eye_hollow.svg" />
+    <img id="eye_right2"src="eye_hollow.svg" />
   </div>
-  
+
   <script>
     // coordinate variables
     var eye_left_x = 100;
     var eye_left_y = 100;
     var eye_right_x = 250;
     var eye_right_y = 100;
-    
+
     // set initial positions
     document.getElementById('eye_left').style.left = eye_left_x + 'px';
     document.getElementById('eye_left').style.top = eye_left_y + 'px';
     document.getElementById('eye_right').style.left = eye_right_x + 'px';
     document.getElementById('eye_right').style.top = eye_right_y + 'px';
-    
+
     // move eyes up event listener
     document.getElementById('eyes_up_btn').addEventListener('click', function() {
         eye_left_y -= 10;
@@ -91,7 +93,59 @@
         document.getElementById('eye_right').style.top = eye_right_y + 'px';
       }
     );
+
+    // move eyes down event listener
+    document.getElementById('eyes_down_btn').addEventListener('click', function() {
+        eye_left_y += 10;
+        document.getElementById('eye_left').style.top = eye_left_y + 'px';
+        eye_right_y += 10;
+        document.getElementById('eye_right').style.top = eye_right_y + 'px';
+      }
+    );
+
+    // move eyes closer together event listener
+    document.getElementById('eyes_closer_btn').addEventListener('click', function() {
+        eye_left_x += 10;
+        document.getElementById('eye_left').style.left = eye_left_x + 'px';
+        eye_right_x -= 10;
+        document.getElementById('eye_right').style.left = eye_right_x + 'px';
+
+      }
+    );
+
+    // moves eyes further apart event listener
+    document.getElementById('eyes_further_btn').addEventListener('click', function() {
+        eye_left_x -= 10;
+        document.getElementById('eye_left').style.left = eye_left_x + 'px';
+        eye_right_x += 10;
+        document.getElementById('eye_right').style.left = eye_right_x + 'px';
+
+      }
+    );
+
+
+    // idk if this shit is right coordinate variables
+    var eye_left2_x = 100;
+    var eye_left2_y = 100;
+    var eye_right2_x = 250;
+    var eye_right2_y = 100;
+
+    // and set second positions
+    document.getElementById('eye_left2').style.left = eye_left2_x + 'px';
+    document.getElementById('eye_left2').style.top = eye_left2_y + 'px';
+    document.getElementById('eye_right2').style.left = eye_right2_x + 'px';
+    document.getElementById('eye_right2').style.top = eye_right2_y + 'px';
+
+
+    // also this eyes hollow event listener
+    document.getElementById('eyes_hollow_btn').addEventListener('click', function() {
+        eye_left_y -= 10;
+        document.getElementById('eye_left2').style.top = eye_left_y + 'px';
+        eye_right_y -= 10;
+        document.getElementById('eye_right2').style.top = eye_right_y + 'px';
+      }
+    );
   </script>
-  
+
 </body>
 </html>
